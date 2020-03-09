@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绘制弧线</title>
+    <style>
+        #canvas{
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas=document.getElementById('canvas');
+        canvas.width="600";
+        canvas.height="600";
+        var context=canvas.getContext('2d');
+        
+        context.lineWidth=5;
+        context.strokeStyle="#005588";
+        context.beginPath();
+        context.arc(300,300,200,0,0.5*Math.PI,false);
+        context.closePath();
+        context.stroke();
+        
+    </script>
+</body>
+</html>

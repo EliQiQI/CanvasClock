@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvasIndex</title>
+    <style>
+        #canvas {
+            border: 1px solid #bbb;
+            background-color: #ddd;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="800" height="600" id="canvas">
+        当前浏览器不支持Canvas,请更换浏览器后再试
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById('canvas');
+
+        //在JS中指定画布的宽高
+        /* canvas.width=800;
+        canvas.height=600;*/
+
+        //浏览器兼容JS处理
+        /*
+        if(canvas.getContext('2d')){
+            var context=canvas.getContext;
+        }else{
+            alert("当前浏览器不支持Canvas,请更换浏览器后再试");
+        }
+        */
+        var context = canvas.getContext('2d');
+        //使用context绘制
+        // console.log(context);
+
+        //Draw a Line
+        context.moveTo(100, 100);
+        context.lineTo(500, 500);
+        context.lineTo(100, 500);
+        context.lineTo(100, 100);
+
+        /*
+        context.lineWidth=5;//设置线条宽度
+        context.strokeStyle="#005588";//设置线条样式
+        context.stroke();//笔画,用于绘制线条
+        */
+
+        /*
+        context.fillStyle = "rgb(2,100,30)";//设置填充颜色
+        context.fill();//颜料桶,用于填充
+        */
+        context.lineWidth=5;
+        context.strokeStyle="#005588";
+        context.stroke();
+
+        context.beginPath();//基于状态的,保证分开处理
+        context.moveTo(200,100)
+        context.lineTo(300,300)
+        context.closePath();
+        context.strokeStyle="black";
+        context.stroke();
+    </script>
+</body>
+
+</html>

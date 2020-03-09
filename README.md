@@ -3,4 +3,6 @@
  `js/digit.js`:存放数字排列  
  `index.html`:渲染时钟页  
  `html/ball.html`:渲染小球物理运动页  
- 
+
+
+ `canvaslearn`:canvas的学习代码,画笔的基本使用
