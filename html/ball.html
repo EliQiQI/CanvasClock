@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ball</title>
+    <style>
+        #canvas {
+            background: azure;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    const WIDTH = 400;
+    const HEIGTH = 400;
+    var ball = {
+        x: 300,
+        y: 100,
+        r: 20,
+        gy: 2,
+        gx: 0,
+        f: 0.99,
+        vx: -20,
+        vy: -20,
+        color: '#005588'
+    }
+    var canvas = document.getElementById('canvas');
+    canvas.width = WIDTH;
+    canvas.height = HEIGTH;
+    var context = canvas.getContext('2d');
+    setInterval(
+        () => {
+            render(context);
+            update();
+        },
+        30
+    )
+
+    function update() {
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+        ball.vy += ball.gy;
+        ball.vx += ball.gx;
+
+        if (ball.y >= HEIGTH - ball.r) {
+            ball.y = HEIGTH - ball.r;
+            ball.vy = -ball.vy * ball.f;
+        }
+        if (ball.y < ball.r) {
+            ball.y = ball.r;
+            ball.vy = -ball.vy * ball.f;
+        }
+        if (ball.x > WIDTH - ball.r) {
+            ball.x = WIDTH - ball.r;
+            ball.vx = -ball.vx * ball.f;
+
+        }
+        if (ball.x < ball.r) {
+            ball.x = ball.r;
+            ball.vx = -ball.vx * ball.f;
+        }
+
+    }
+
+    function render(cxt) {
+        cxt.clearRect(0, 0, cxt.canvas.width, cxt.canvas.height);
+
+        cxt.fillStyle = ball.color;
+        cxt.beginPath();
+        cxt.arc(ball.x, ball.y, ball.r, 0, 2 * Math.PI)
+        cxt.closePath();
+
+        cxt.fill();
+    }
+
+</script>
+</body>
+</html>
